@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  config-server:
+    image: docker.io/library/configserver:0.0.1-SNAPSHOT
+    # image: config-server/configserver:0.0.1-SNAPSHOT
+    ports:
+      - "8071:8071"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    networks:
+      backend:
+        aliases:
+          - "config-server"
+
+networks:
+  backend:
+    driver: bridge

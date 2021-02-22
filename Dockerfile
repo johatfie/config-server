@@ -1,4 +1,5 @@
 FROM openjdk:11-slim as build
+# LABEL maintainer="Jon Hatfield <johatfie@gmail.com>"
 WORKDIR application
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} application.jar
