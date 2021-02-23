@@ -10,7 +10,7 @@ spring:
         native:
           search-locations: classpath:/config
         git:
-          uri: https://github.com/johatfie/config-server.git
+          uri: https://github.com/johatfie/microservices-properties.git
           searchPaths: demo,license-server
 
 server:
