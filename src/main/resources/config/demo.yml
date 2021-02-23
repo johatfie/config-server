@@ -1,0 +1,8 @@
+example:
+  property: I AM THE DEFAULT
+foo: bar
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:

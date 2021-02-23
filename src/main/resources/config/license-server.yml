@@ -1,0 +1,10 @@
+example:
+  property: I AM THE DEFAULT
+spring:
+  datasource:
+    platform: postgres
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: none
+    show-sql: true
