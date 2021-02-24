@@ -16,8 +16,7 @@ services:
     # image: docker.io/library/configserver:0.0.1-SNAPSHOT
     image: micro/eureka-server:0.0.1-SNAPSHOT
     depends_on:
-      config-server:
-        condition: service_started
+      - config-server
     ports:
       - "8070:8070"
     environment:
