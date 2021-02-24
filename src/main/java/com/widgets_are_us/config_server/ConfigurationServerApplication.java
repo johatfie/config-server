@@ -1,4 +1,4 @@
-package com.widgets_are_us.configserver;
+package com.widgets_are_us.config_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

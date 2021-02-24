@@ -2,8 +2,8 @@ version: "3.7"
 
 services:
   config-server:
-    image: docker.io/library/configserver:0.0.1-SNAPSHOT
-    # image: config-server/configserver:0.0.1-SNAPSHOT
+    # image: docker.io/library/configserver:0.0.1-SNAPSHOT
+    image: micro/config-server:0.0.1-SNAPSHOT
     ports:
       - "8071:8071"
     environment:
@@ -12,6 +12,20 @@ services:
       backend:
         aliases:
           - "config-server"
+  eureka-server:
+    # image: docker.io/library/configserver:0.0.1-SNAPSHOT
+    image: micro/eureka-server:0.0.1-SNAPSHOT
+    depends_on:
+      config-server:
+        condition: service_started
+    ports:
+      - "8070:8070"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=dev"
+    networks:
+      backend:
+        aliases:
+          - "eureka-server"
 
 networks:
   backend:
