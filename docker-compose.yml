@@ -14,8 +14,8 @@ services:
 
   eureka-server:
     image: micro/eureka-server:0.0.1-SNAPSHOT
-    #depends_on:
-      #- config-server
+    depends_on:
+      - config-server
     ports:
       - "8070:8070"
     environment:
@@ -27,8 +27,8 @@ services:
 
   gateway-server:
     image: micro/gateway-server:0.0.1-SNAPSHOT
-    #depends_on:
-      #- config-server
+    depends_on:
+      - eureka-server
     ports:
       - "8072:8072"
     environment:
@@ -37,31 +37,38 @@ services:
       backend:
         aliases:
           - "gateway-server"
-  zipkin:
-    image: openzipkin/zipkin
-    container_name: zipkin
-    ports:
-      - 9411: 9411
-    networks:
-      backend:
-        aliases:
-          - "zipkin"
 
-  keycloak:
-    image: jboss/keycloak
-    restart: always
-    environment:
-      KEYCLOAK_USER: admin
-    KEYCLOAK_PASSWORD: admin
-    ports:
-      - "8080:8080"
-    networks:
-      backend:
-        aliases:
-          - "keycloak"
+  #zipkin:
+    #image: openzipkin/zipkin
+    #depends_on:
+      #- gateway-server
+    #container_name: zipkin
+    #ports:
+      #- 9411:9411
+    #networks:
+      #backend:
+        #aliases:
+          #- "zipkin"
+
+  #keycloak:
+    #image: jboss/keycloak
+    #depends_on:
+      #- gateway-server
+    #restart: always
+    #environment:
+      #KEYCLOAK_USER: admin
+      #KEYCLOAK_PASSWORD: admin
+    #ports:
+      #- "8080:8080"
+    #networks:
+      #backend:
+        #aliases:
+          #- "keycloak"
 
   zookeeper:
     image: wurstmeister/zookeeper:latest
+    depends_on:
+      - gateway-server
     ports:
       - 2181:2181
     networks:
@@ -87,14 +94,16 @@ services:
         aliases:
           - "kafka"
 
-  redisserver:
-    image: redis:alpine
-    ports:
-      - 6379:6379
-    networks:
-      backend:
-        aliases:
-          - "redis"
+  #redisserver:
+    #image: redis:alpine
+    #depends_on:
+      #- gateway-server
+    #ports:
+      #- 6379:6379
+    #networks:
+      #backend:
+        #aliases:
+          #- "redis"
 
 networks:
   backend:
