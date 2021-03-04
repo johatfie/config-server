@@ -3,12 +3,13 @@ spring:
     name: config-server
   profiles:
     active:
-      - native, git
+      #- native, git
+      - git
   cloud:
     config:
       server:
-        native:
-          search-locations: classpath:/config
+        #native:
+          #search-locations: classpath:/config
         git:
           uri: https://github.com/johatfie/microservices-properties.git
           #searchPaths: eureka-server,gateway-server
@@ -16,11 +17,16 @@ spring:
       enabled: true
       refresh:
         enabled: true
-    stream:
-      kafka:
-        binder:
-          zkNodes: localhost:9092 #,127.0.0.1:9092
-          brokers: localhost:2181 #,127.0.1:2181
+    #stream:
+      #kafka:
+        #binder:
+          #zkNodes: kafka:9092 #,127.0.0.1:9092
+          #brokers: kafka:2181 #,127.0.1:2181
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: user
+    password: secret
 
 server:
   port: 8071
