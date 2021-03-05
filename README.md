@@ -1,7 +1,7 @@
-# config-server
-Configuration Server for Widgets Are Us microservices project
+# Configuration Server for Widgets Are Us microservices project
 
-## Frameworks and Dependencies
+## Technologies
+- Java 11
 - Spring Boot 2.4.3
 - Spring Cloud 2020.0.1
 - Docker
@@ -12,5 +12,5 @@ Configuration Server for Widgets Are Us microservices project
 
 - Uses Github as the source for config files for all the microservices
 - Uses RabbitMQ to push configuration updates to the microservices with changed configuration
-- Logging is handled by an ElasticSearch Logstash Kibana (ELK) stack
+- Logging is handled by an ElasticSearch, Logstash, and Kibana (ELK) stack
 - Zipkin is used for visualizing user transactions across multiple services
