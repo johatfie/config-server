@@ -13,4 +13,4 @@ Configuration Server for Widgets Are Us microservices project
 - Uses Github as the source for config files for all the microservices
 - Uses RabbitMQ to push configuration updates to the microservices with changed configuration
 - Logging is handled by an ElasticSearch Logstash Kibana (ELK) stack
-- Zipkin is used for tracing metrics
+- Zipkin is used for visualizing user transactions across multiple services
