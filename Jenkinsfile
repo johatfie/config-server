@@ -17,7 +17,7 @@ node {
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
-        archiveArtifacts 'config-server/target/*.jar'
+        archiveArtifacts 'target/*.jar'
     }
     stage('Build image') {
         sh "'${mvnHome}/bin/mvn' -Ddocker.image.prefix=326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us -Dproject.artifactId=config-server -Ddocker.image.version=latest dockerfile:build"
