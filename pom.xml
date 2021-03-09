@@ -10,7 +10,8 @@
     </parent>
     <groupId>com.widgets_are_us</groupId>
     <artifactId>config-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <!--<version>0.0.1-SNAPSHOT</version>-->
+    <version>0.0.1-snapshot</version>
     <name>Configuration Server</name>
     <description>Configuration Server</description>
     <properties>
