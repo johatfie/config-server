@@ -24,8 +24,7 @@ node {
     }
     stage('Push image') {
         docker.withRegistry('https://326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us', 'ecr:us-east-2:ecr-user') {
-            //sh "docker push 326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us/config-server:0.0.1-SNAPSHOT"
-            sh "docker push 0.0.1-SNAPSHOT"
+            sh "docker push 326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us/config-server:0.0.1-SNAPSHOT"
         }
     }
     stage('Kubernetes deploy') {
