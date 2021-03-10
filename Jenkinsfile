@@ -28,7 +28,8 @@ node {
         }
     }
     stage('Kubernetes deploy') {
-        kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+        //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://84B31EEEAB9245573293B5C2AE2612D5.yl4.us-east-2.eks.amazonaws.com']
+        kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: '/root/.kube'], kubeconfigId: 'config', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://84B31EEEAB9245573293B5C2AE2612D5.yl4.us-east-2.eks.amazonaws.com']
     }
 
 }
