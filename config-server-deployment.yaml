@@ -31,7 +31,7 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: dev
         image: 326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us/config-server:0.0.1-SNAPSHOT
-        imagePullPolicy: ""
+        imagePullPolicy: Always
         name: config-server
         ports:
         - containerPort: 8071

@@ -28,10 +28,11 @@ node {
         }
     }
     stage('Kubernetes deploy') {
+        // This plugin isn't working do to a bug handling the yaml in the deployfile.  I have not been able to find a suitable workaround.
         //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://84B31EEEAB9245573293B5C2AE2612D5.yl4.us-east-2.eks.amazonaws.com']
-        //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: '/root/.kube'], kubeconfigId: 'config', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://84B31EEEAB9245573293B5C2AE2612D5.yl4.us-east-2.eks.amazonaws.com']
-        //kubernetesDeploy configs: 'config-server-deployment.yaml', dockerCredentials: [[credentialsId: 'ecr:us-east-2:ecr-user', url: 'http://326608040956.dkr.ecr.us-east-2.amazonaws.com/widgets-are-us/config-server']], kubeConfig: [path: '/root/.kube/config'], kubeconfigId: 'dd6cbcbd-9ee1-459e-82bd-7f838cfd859a', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-        kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+        //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+
+        sh "kb get pods | grep config-server | awk '{ print $1 }' | xargs kubectl delete pod"
     }
 
 }
