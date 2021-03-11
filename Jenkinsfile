@@ -33,7 +33,7 @@ node {
         //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 
         //sh "/usr/local/bin/kubectl get pods | grep config-server | awk '{ print \$1 }' | xargs /usr/local/bin/kubectl delete pod"
-        sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/$(date)/g\" /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
+        sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
         sh "/usr/local/bin/kubectl apply -f /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
     }
 
