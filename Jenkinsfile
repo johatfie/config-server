@@ -35,7 +35,9 @@ node {
         //sh "/usr/local/bin/kubectl get pods | grep config-server | awk '{ print \$1 }' | xargs /usr/local/bin/kubectl delete pod"
         //sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
         sh "env | sort"
-        sh "cat /home/ec2-user/.kube/config"
+        //sh "cat /home/ec2-user/.kube/config"
+        //sh "cat /var/lib/jenkins/.kube/config"
+
         sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" config-server-deployment.yaml"
         //sh "/usr/local/bin/kubectl apply -f /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
         //sh "/usr/local/bin/kubectl --kubeconfig=/home/ec2-user/.kube/config apply -f config-server-deployment.yaml"
