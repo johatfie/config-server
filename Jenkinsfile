@@ -30,12 +30,12 @@ node {
     stage('Kubernetes deploy') {
         // This plugin isn't working do to a bug handling the yaml in the deployfile.  I have not been able to find a suitable workaround.
         //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textDrecentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://84B31EEEAB9245573293B5C2AE2612D5.yl4.us-east-2.eks.amazonaws.com']
-        //kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+        kubernetesDeploy configs: 'config-server-deployment.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 
-        //sh "/usr/local/bin/kubectl get pods | grep config-server | awk '{ print \$1 }' | xargs /usr/local/bin/kubectl delete pod"
-        //sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
+        sh "/usr/local/bin/kubectl get pods | grep config-server | awk '{ print \$1 }' | xargs /usr/local/bin/kubectl delete pod"
+        sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
         sh "sed -ie \"s/THIS_STRING_IS_REPLACED_DURING_BUILD/\$(date)/g\" config-server-deployment.yaml"
-        //sh "/usr/local/bin/kubectl apply -f /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
+        sh "/usr/local/bin/kubectl apply -f /var/lib/jenkins/workspace/config-server/config-server-deployment.yml"
         sh "/usr/local/bin/kubectl apply -f config-server-deployment.yaml"
     }
 
